@@ -113,15 +113,130 @@ void priority_queue_implementation(){
 
     // Minimum Heap priority queue implementation
     priority_queue<ll, vector<ll>, greater<ll>> pr;
-    pr.push(2);
-    pr.push(6);
-    pr.push(3);
-    pr.push(4);
-    pr.push(5);
+    pr.push(2);  // {2}
+    pr.push(6);  // {2,6}
+    pr.push(3);  // {2,6,3}
+    pr.push(4);  // {2,6,3,4}
+    pr.push(5);  // {2,6,3,4,5}
     cout <<"Minimum Heap concept: " <<pr.top() << endl;
 
 }
 
+void sets_implementation(){
+    // stores in sorted order and stores unique.
+    set<ll> sg;
+    sg.insert(3);
+    sg.insert(3);
+    sg.insert(3);
+    sg.insert(3);
+    sg.insert(4);
+    sg.insert(5);
+    sg.insert(6);
+    sg.insert(4);
+    auto cnt = sg.find(3);
+    cout << *cnt << endl;
+    // sg.erase(5);
+    for (auto i : sg){
+        cout << i << " ";
+    }cout << endl;
+
+    //unordered_set
+
+    unordered_set<ll> st;
+    // does not store in sorted order.
+}
+
+// binary search in stl
+void binary_stl(){
+    ll n = 5;
+    ll arr[n] = {1,2,3,4,5};
+    bool res = binary_search(arr,arr+n, 3);
+    cout << res << endl;
+}
+
+void multiset_implementation(){
+    // same as set but it stores duplicate elements also.
+    multiset<ll> ms ;
+    ms.insert(1);
+    ms.insert(1);
+    ms.insert(2);
+    ms.insert(3);
+    ms.insert(4);
+    ms.insert(5);
+    ms.insert(4);
+    ms.insert(3);
+
+    ms.erase(1); // all 1's erased.
+    ms.erase(ms.find(1)); // only 1 is erased.
+    for (auto i : ms){
+        cout << i << " " ;
+    }cout << endl;
+}
+
+void map_implementation(){
+    map<ll,ll> mp;
+    // mp[key] = value ;
+    mp[2] = 30;
+    mp.insert({3,5});
+
+    map<ll, pair<ll,ll>> mpp;
+    mpp[4] = {5,7};
+
+    for (auto i : mpp){
+        cout << i.first << endl;
+        cout << i.second.second << endl;
+    }
+
+    map<pair<ll,ll>, ll> mpl;
+    mpl[{3,9}] = 1;
+    mpl[{4,6}] = 0;
+    mpl[{5,8}] = 9;
+    for (auto i : mpl){
+        cout << i.first.second << endl;
+        cout << i.second << endl;
+    }
+
+    cout << mpl.size() << endl;
+
+}
+// unordered map has unique keys but it will not be sorted.
+// map -> logn 
+
+
+// function to sort the pairs in increasing order of the second element of the pair.
+bool comp(pair<ll,ll> p1, pair<ll,ll> p2){
+    if (p1.second < p2.second){
+        return true;
+    }
+    if (p1.second > p2.second){
+        return false;
+    }
+    if (p1.first > p2.first) return true;
+    return false;
+
+}
+
+void extra(){
+    pair<ll,ll> arr[] = {{1,2}, {2,1}, {4,1}};
+    sort(arr,arr+3, comp);
+    for (ll i = 0 ; i < 3 ; i ++){
+        cout << arr[i].first << " ";
+    }cout << endl;
+}
+
+ll binary_count_of_1(ll n){
+    ll cnt = __builtin_popcountll(n);
+    return cnt;
+}
+
+ll permut_string(string s){
+   sort(s.begin(),s.end());
+   ll cnt = 0;
+   do{
+       cnt++;
+   }while (next_permutation(s.begin(),s.end()));
+   return cnt;
+}
 
 signed main(){
     // pair_implementation();
@@ -130,7 +245,15 @@ signed main(){
     // deque_implementation();
     // stack_implementation();
     // queue_implementation();
-    priority_queue_implementation();
+    // priority_queue_implementation();
+    // sets_implementation();
+    // binary_stl();
+    // multiset_implementation();
+    // map_implementation();
+    // extra();
+    // cout << binary_count_of_1(6);
+    cout << permut_string("123");
 
     return 0;
 }
+
