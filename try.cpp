@@ -18,7 +18,27 @@ using namespace std;
 
 
 void start_activity(){
-
+    ll n,k;
+    cin >> n >> k;
+    char s[k];
+    map<char,ll> mp;
+    fr (0,n){
+        cin >> s[i];
+        mp[s[i]]++;
+    }
+    ll cnt = 0;
+    for (auto i : mp){
+        if (i.first == 'o' or i.first == 'x'){
+            if (i.second % 2 == 0){
+                cnt++;
+            }
+        }
+        else {
+            cout << 0 << endl;
+            return;
+        }
+    }
+    cout << cnt << endl;
 }
 
 //main_function starts here
@@ -26,10 +46,10 @@ void start_activity(){
 signed main(int argc, char const *argv[])
 {
     fio
-    ll tt;
-    cin>>tt;
-    while(tt--){
+    // ll tt;
+    // cin>>tt;
+    // while(tt--){
+    // }
         start_activity();
-    }
     return 0;
 }
